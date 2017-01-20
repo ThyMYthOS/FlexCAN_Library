@@ -115,6 +115,17 @@ void FlexCAN::setFilter(const CAN_filter_t &filter, uint8_t n)
   }
 }
 
+// -------------------------------------------------------------
+void FlexCAN::enableListenOnlyMode(void)
+{
+  FLEXCAN0_CTRL1 |= FLEXCAN_CTRL_LOM;
+}
+
+// -------------------------------------------------------------
+void FlexCAN::disableListenOnlyMode(void)
+{
+  FLEXCAN0_CTRL1 &= ~FLEXCAN_CTRL_LOM;
+}
 
 // -------------------------------------------------------------
 int FlexCAN::available(void)
@@ -223,4 +234,3 @@ int FlexCAN::write(const CAN_message_t &msg)
 
   return 1;
 }
-

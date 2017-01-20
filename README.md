@@ -46,6 +46,15 @@ Enable the CAN to start actively participating on the CANbus.  Enable reception 
 **setFilter(filter, number)**
 Set the receive filter selected by number, 0-7.  When using filters it is required to set them all. If the application uses less than 8 filters, duplicate one filter for the unused ones.
 
+**enableListenOnlyMode()**
+Enable the listen only mode. Can only be set before calling begin() or after end().
+In this mode, transmission is disabled, all error counters are frozen and the module
+operates in a CAN Error Passive mode. Only messages acknowledged by another
+CAN station will be received.
+
+**disableListenOnlyMode()**
+Disable the listen only mode. Can only be set before calling begin() or after end().
+
 The mask and filter are **CAN_filter_t** type structures.
 
 ###Caller Blocking Support
@@ -59,4 +68,3 @@ The timeout monitoring mechanism calls **yield()** until a buffer is found or th
 
 ###In-order Transmission
 Caller blocking can be used to **write()** frames guaranteed in-order to the bus. When caller blocking is selected for **write()** (non-zero timeout specified), a single hardware transmit buffer is used.
-

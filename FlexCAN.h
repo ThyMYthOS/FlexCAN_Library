@@ -35,6 +35,8 @@ public:
     begin(defaultMask);
   }
   void setFilter(const CAN_filter_t &filter, uint8_t n);
+  void enableListenOnlyMode(void);
+  void disableListenOnlyMode(void);
   void end(void);
   int available(void);
   int write(const CAN_message_t &msg);
